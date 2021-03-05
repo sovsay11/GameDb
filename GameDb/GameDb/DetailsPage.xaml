@@ -3,10 +3,106 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="GameDb.DetailsPage">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <Grid BackgroundColor="AntiqueWhite">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="0.35*"/>
+                <RowDefinition Height="0.35*"/>
+                <RowDefinition Height="0.35*"/>
+                <RowDefinition Height="0.35*"/>
+                <RowDefinition Height="0.35*"/>
+                <RowDefinition Height="0.35*"/>
+                <RowDefinition Height="0.35*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Label x:Name="LblName"
+                   Text="Name"
+                   Grid.ColumnSpan="4"
+                   HorizontalOptions="Center"
+                   FontSize="30"
+                   FontAttributes="Bold"/>
+            
+            <Image x:Name="ImgPokemon"
+                   Grid.Row="1"
+                   Grid.ColumnSpan="4"
+                   HorizontalOptions="Center"
+                   Scale="5"/>
+
+            
+            
+            <Label Text="Stats"
+                   Grid.Row="2"
+                   Grid.ColumnSpan="4"
+                   HorizontalOptions="Center"
+                   VerticalOptions="End"
+                   FontSize="30"
+                   FontAttributes="Bold"/>
+
+            <Label Text="HP:"
+                   Grid.Row="3"
+                   Grid.ColumnSpan="2"
+                   FontSize="20"
+                   HorizontalTextAlignment="End"/>
+            <Label Text="Attack:"
+                   Grid.Row="4"
+                   Grid.ColumnSpan="2"
+                   FontSize="20"
+                   HorizontalTextAlignment="End"/>
+            <Label Text="Defense:"
+                   Grid.Row="5"
+                   Grid.ColumnSpan="2"
+                   FontSize="20"
+                   HorizontalTextAlignment="End"/>
+            <Label Text="Special Attack:"
+                   Grid.Row="6"
+                   Grid.ColumnSpan="2"
+                   FontSize="20"
+                   HorizontalTextAlignment="End"/>
+            <Label Text="Special Defense:"
+                   Grid.Row="7"
+                   Grid.ColumnSpan="2"
+                   FontSize="20"
+                   HorizontalTextAlignment="End"/>
+            <Label Text="Speed:"
+                   Grid.Row="8"
+                   Grid.ColumnSpan="2"
+                   FontSize="20"
+                   HorizontalTextAlignment="End"/>
+
+            <Label x:Name="LblHP"
+                   FontSize="20"
+                   Grid.Row="3"
+                   Grid.Column="2"/>
+            <Label x:Name="LblAttack"
+                   FontSize="20"
+                   Grid.Row="4"
+                   Grid.Column="2"/>
+            <Label x:Name="LblDefense"
+                   FontSize="20"
+                   Grid.Row="5"
+                   Grid.Column="2"/>
+            <Label x:Name="LblSpecialAttack"
+                   FontSize="20"
+                   Grid.Row="6"
+                   Grid.Column="2"/>
+            <Label x:Name="LblSpecialDefense"
+                   FontSize="20"
+                   Grid.Row="7"
+                   Grid.Column="2"/>
+            <Label x:Name="LblSpeed"
+                   FontSize="20"
+                   Grid.Row="8"
+                   Grid.Column="2"/>
+                
+                
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

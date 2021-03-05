@@ -10,8 +10,24 @@
                    Placeholder="Enter a name"
                    TextChanged="EntName_TextChanged"/>
         </ContentView>
-        <ListView x:Name="LstViewPokemon"
-                  BackgroundColor="LightSteelBlue"/>
+
+        <ListView x:Name="LstViewPokemon"/>
+
+        <!-- save this for later
+        <ScrollView>
+            <StackLayout x:Name="SLPokemon">
+            </StackLayout>
+        </ScrollView>
+        -->
+
+        <Button x:Name="BtnPokeDetails"
+                Text="View Details"
+                FontSize="30"
+                BackgroundColor="LightGray"
+                Margin="0,0,0,10"
+                Padding="20"
+                Clicked="BtnPokeDetails_Clicked"/>
     </StackLayout>
+        
 
 </ContentPage>

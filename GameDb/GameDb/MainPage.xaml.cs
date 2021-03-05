@@ -10,6 +10,7 @@ using Newtonsoft.Json.Linq;
 using System.Net;
 using System.IO;
 using System.Reflection;
+using System.Globalization;
 
 namespace GameDb
 {
@@ -22,7 +23,11 @@ namespace GameDb
          * in a list. When an item is selected, navigate to
          * a new page with some basic details about the selected item (details include
          * name and type
+         * 
+         * Maybe I could also create a content view or something with a label and an image tied to it
          */
+
+        List<string> names = new List<string>();
 
         public MainPage()
         {
@@ -31,16 +36,9 @@ namespace GameDb
             LoadPokemon();
         }
 
-        private void EntName_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            
-        }
-
         // grab the pokemon names
         private void LoadPokemon()
         {
-            List<string> names = new List<string>();
-
             var assembly = IntrospectionExtensions.GetTypeInfo(typeof(MainPage)).Assembly;
             Stream sr = assembly.GetManifestResourceStream("GameDb.pokemon.txt");
 
@@ -48,47 +46,63 @@ namespace GameDb
             {
                 while (!reader.EndOfStream)
                 {
-                    names.Add(reader.ReadLine());
+                    // capitalize the first letter of the pokemon name
+                    string pokeName = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(reader.ReadLine().ToLower());
+
+                    names.Add(pokeName);
+
+                    //Label label = new Label { Text = pokeName };
+
+                    //SLPokemon.Children.Add(label);
                 }
             }
 
             LstViewPokemon.ItemsSource = names;
         }
 
-        private void SearchPokemon()
+        /// <summary>
+        /// Filter pokemon by entry box
+        /// </summary>
+        private void FilterPokemon()
         {
-            List<string> names = new List<string>();
-            using (WebClient wc = new WebClient())
+            string search = EntName.Text;
+            // new tempAccount list, local in scope
+            List<string> tempNames = new List<string>();
+            // clear it just in case
+            tempNames.Clear();
+            // populate the list and show the details using the current search text
+            foreach (var name in names)
             {
-                try
+                if (name.ToLower().Contains(search.ToLower()))
                 {
-                    // offset is starting location
-                    // limit is the number of entries
-                    string jsonData = wc.DownloadString($@"https://pokeapi.co/api/v2/pokemon?offset=0&limit=20");
-
-                    // method 1
-                    JObject pokeDetails = JObject.Parse(jsonData);
-
-                    // might need
-                    int count = int.Parse(pokeDetails["count"].ToString());
-
-                    foreach (var item in pokeDetails["results"])
-                    {
-                        names.Add(pokeDetails["name"].ToString());
-                    }
-
-                    LstViewPokemon.ItemsSource = names;
-
-                    // method 2 of deserialization
-                    //PokeDetails poke = JsonConvert.DeserializeObject<PokeDetails>(jsonData);
+                    tempNames.Add(name);
                 }
-                catch (Exception)
-                {
+            }
+            LstViewPokemon.ItemsSource = tempNames;
+        }
 
-                    throw;
-                }
+        /// <summary>
+        /// Open new details window using selected pokemon
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnPokeDetails_Clicked(object sender, EventArgs e)
+        {
+            if (LstViewPokemon.SelectedItem.ToString() != null)
+            {
+                DetailsPage detailsPage = new DetailsPage(LstViewPokemon.SelectedItem.ToString());
+
+                Navigation.PushAsync(detailsPage, true);
+            }
+            else
+            {
+                DisplayAlert("Error", "Please select a pokemon", "Close");
             }
         }
 
+        private void EntName_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            FilterPokemon();
+        }
     }
 }
