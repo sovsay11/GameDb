@@ -51,6 +51,17 @@ namespace GameDb
                     LblSpecialAttack.Text = poke.stats[3].base_stat.ToString();
                     LblSpecialDefense.Text = poke.stats[4].base_stat.ToString();
                     LblSpeed.Text = poke.stats[5].base_stat.ToString();
+
+                    if (poke.types.Count == 2)
+                    {
+                        LblType1.Text = poke.types[0].type.name.ToString();
+                        LblType2.Text = poke.types[1].type.name.ToString();
+                    }
+                    else
+                    {
+                        LblType1.Text = poke.types[0].type.name.ToString();
+                    }
+                    
                 }
                 catch (Exception)
                 {
