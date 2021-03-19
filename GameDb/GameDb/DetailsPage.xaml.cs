@@ -44,7 +44,7 @@ namespace GameDb
 
                     ImgPokemon.Source = poke.sprites.front_default;
 
-                    LblName.Text = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(poke.name);
+                    LblName.Text = ConvertToUpper(poke.name);
                     LblHP.Text = poke.stats[0].base_stat.ToString();
                     LblAttack.Text = poke.stats[1].base_stat.ToString();
                     LblDefense.Text = poke.stats[2].base_stat.ToString();
@@ -54,12 +54,13 @@ namespace GameDb
 
                     if (poke.types.Count == 2)
                     {
-                        LblType1.Text = poke.types[0].type.name.ToString();
-                        LblType2.Text = poke.types[1].type.name.ToString();
+                        LblType1.Text = ConvertToUpper(poke.types[0].type.name.ToString());
+                        LblType2.Text = ConvertToUpper(poke.types[1].type.name.ToString());
                     }
                     else
                     {
-                        LblType1.Text = poke.types[0].type.name.ToString();
+                        LblType1.Text = ConvertToUpper(poke.types[0].type.name.ToString());
+                        Grid.SetColumnSpan(LblType1, 4);
                     }
                     
                 }
@@ -68,6 +69,11 @@ namespace GameDb
                     throw;
                 }
             }
+        }
+        private string ConvertToUpper(string text)
+        {
+            text = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(text);
+            return text;
         }
     }
 }

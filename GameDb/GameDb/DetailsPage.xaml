@@ -106,11 +106,13 @@
                        FontSize="20"
                        Grid.Row="9"
                        Grid.ColumnSpan="2"
-                       HorizontalTextAlignment="End"/>
+                       HorizontalTextAlignment="Center"/>
                 <Label x:Name="LblType2"
                        FontSize="20"
                        Grid.Row="9"
-                       Grid.Column="2"/>
+                       Grid.Column="2"
+                       Grid.ColumnSpan="2"
+                       HorizontalTextAlignment="Center"/>
             </Grid>
         </ScrollView>
     </ContentPage.Content>
