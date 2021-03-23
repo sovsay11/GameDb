@@ -47,61 +47,134 @@
                    FontSize="30"
                    FontAttributes="Bold"/>
 
+                <!--Name labels for stats-->
                 <Label Text="HP:"
                    Grid.Row="3"
-                   Grid.ColumnSpan="2"
-                   FontSize="20"
+                   FontSize="15"
                    HorizontalTextAlignment="End"/>
                 <Label Text="Attack:"
                    Grid.Row="4"
-                   Grid.ColumnSpan="2"
-                   FontSize="20"
+                   FontSize="15"
                    HorizontalTextAlignment="End"/>
                 <Label Text="Defense:"
                    Grid.Row="5"
-                   Grid.ColumnSpan="2"
-                   FontSize="20"
+                   FontSize="15"
                    HorizontalTextAlignment="End"/>
-                <Label Text="Special Attack:"
+                <Label Text="Sp. Attack:"
                    Grid.Row="6"
-                   Grid.ColumnSpan="2"
-                   FontSize="20"
+                   FontSize="15"
                    HorizontalTextAlignment="End"/>
-                <Label Text="Special Defense:"
+                <Label Text="Sp. Defense:"
                    Grid.Row="7"
-                   Grid.ColumnSpan="2"
-                   FontSize="20"
+                   FontSize="15"
                    HorizontalTextAlignment="End"/>
                 <Label Text="Speed:"
                    Grid.Row="8"
-                   Grid.ColumnSpan="2"
-                   FontSize="20"
+                   FontSize="15"
                    HorizontalTextAlignment="End"/>
 
+                <!--Stat values-->
                 <Label x:Name="LblHP"
-                   FontSize="20"
-                   Grid.Row="3"
-                   Grid.Column="2"/>
+                       Text="180"
+                       FontSize="15"
+                       VerticalTextAlignment="Center"
+                       Grid.Row="3"
+                       Grid.Column="1"
+                       Grid.ColumnSpan="3"
+                       Margin="210,0,0,0"/>
                 <Label x:Name="LblAttack"
-                   FontSize="20"
-                   Grid.Row="4"
-                   Grid.Column="2"/>
+                       Text="atk"
+                       FontSize="15"
+                       VerticalTextAlignment="Center"
+                       Grid.Row="4"
+                       Grid.Column="1"
+                       Grid.ColumnSpan="3"
+                       Margin="60,0,0,0"/>
                 <Label x:Name="LblDefense"
-                   FontSize="20"
-                   Grid.Row="5"
-                   Grid.Column="2"/>
+                       Text="df"
+                       FontSize="15"
+                       VerticalTextAlignment="Center"
+                       Grid.Row="5"
+                       Grid.Column="1"
+                       Grid.ColumnSpan="3"
+                       Margin="60,0,0,0"/>
                 <Label x:Name="LblSpecialAttack"
-                   FontSize="20"
-                   Grid.Row="6"
-                   Grid.Column="2"/>
+                       Text="sa"
+                       FontSize="15"
+                       VerticalTextAlignment="Center"
+                       Grid.Row="6"
+                       Grid.Column="1"
+                       Grid.ColumnSpan="3"
+                       Margin="60,0,0,0"/>
                 <Label x:Name="LblSpecialDefense"
-                   FontSize="20"
-                   Grid.Row="7"
-                   Grid.Column="2"/>
+                       Text="sd"
+                       FontSize="15"
+                       VerticalTextAlignment="Center"
+                       Grid.Row="7"
+                       Grid.Column="1"
+                       Grid.ColumnSpan="3"
+                       Margin="60,0,0,0"/>
                 <Label x:Name="LblSpeed"
-                   FontSize="20"
-                   Grid.Row="8"
-                   Grid.Column="2"/>
+                       Text="spd"
+                       FontSize="15"
+                       VerticalTextAlignment="Center"
+                       Grid.Row="8"
+                       Grid.Column="1"
+                       Grid.ColumnSpan="3"
+                       Margin="60,0,0,0"/>
+
+                <!--These are the bars-->
+                <Line x:Name="BarHP"
+                      Grid.Row="3"
+                      Grid.Column="1"
+                      Grid.ColumnSpan="3"
+                      X1="10" Y1="15" X2="200" Y2="15"
+                      StrokeLineCap="Round"
+                      Stroke="LightBlue"
+                      StrokeThickness="12"
+                      />
+                <Line x:Name="BarAttack"
+                      Grid.Row="4"
+                      Grid.Column="1"
+                      Grid.ColumnSpan="3"
+                      X1="10" Y1="15" X2="140" Y2="15"
+                      StrokeLineCap="Round"
+                      Stroke="LightBlue"
+                      StrokeThickness="12"/>
+                <Line x:Name="BarDefense"
+                      Grid.Row="5"
+                      Grid.Column="1"
+                      Grid.ColumnSpan="3"
+                      X1="10" Y1="15" X2="140" Y2="15"
+                      StrokeLineCap="Round"
+                      Stroke="LightBlue"
+                      StrokeThickness="12"/>
+                <Line x:Name="BarSpecialAttack"
+                      Grid.Row="6"
+                      Grid.Column="1"
+                      Grid.ColumnSpan="3"
+                      X1="10" Y1="15" X2="140" Y2="15"
+                      StrokeLineCap="Round"
+                      Stroke="LightBlue"
+                      StrokeThickness="12"/>
+                <Line x:Name="BarSpecialDefense"
+                      Grid.Row="7"
+                      Grid.Column="1"
+                      Grid.ColumnSpan="3"
+                      X1="10" Y1="15" X2="140" Y2="15"
+                      StrokeLineCap="Round"
+                      Stroke="LightBlue"
+                      StrokeThickness="12"/>
+                <Line x:Name="BarSpeed"
+                      Grid.Row="8"
+                      Grid.Column="1"
+                      Grid.ColumnSpan="3"
+                      X1="10" Y1="15" X2="140" Y2="15"
+                      StrokeLineCap="Round"
+                      Stroke="LightBlue"
+                      StrokeThickness="12"/>
+
+                <!--Type labels-->
                 <Label x:Name="LblType1"
                        FontSize="20"
                        Grid.Row="9"
