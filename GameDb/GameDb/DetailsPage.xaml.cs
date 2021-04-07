@@ -17,13 +17,38 @@ namespace GameDb
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class DetailsPage : ContentPage
     {
+        // local variables for stats
         string pokeName, health, attack, defense, spAtk, spDef, spd;
+        Color typeColor;
+
+        // dictionary for colors and type match
+        Dictionary<string, Color> colorDictionary = new Dictionary<string, Color>
+            {
+                { "Normal", Color.FromHex("AAAA99") },
+                { "Fire", Color.FromHex("FF4422") },
+                { "Water", Color.FromHex("3399FF") },
+                { "Electric", Color.FromHex("FFCC33") },
+                { "Grass", Color.FromHex("77CC55") },
+                { "Ice", Color.FromHex("66CCFF") },
+                { "Fighting", Color.FromHex("BB5544") },
+                { "Poison", Color.FromHex("AA5599") },
+                { "Ground", Color.FromHex("DDBB55") },
+                { "Flying", Color.FromHex("8899FF") },
+                { "Psychic", Color.FromHex("FF5599") },
+                { "Bug", Color.FromHex("AABB22") },
+                { "Rock", Color.FromHex("BBAA66") },
+                { "Ghost", Color.FromHex("6666BB") },
+                { "Dragon", Color.FromHex("7766EE") },
+                { "Dark", Color.FromHex("775544") },
+                { "Steel", Color.FromHex("AAAABB") },
+                { "Fairy", Color.FromHex("EE99EE") },
+            };
 
         public DetailsPage(string name)
         {
             InitializeComponent();
 
-            //List<string> names = new List<string>();
+            // connecting to the API
             using (WebClient wc = new WebClient())
             {
                 try
@@ -32,12 +57,10 @@ namespace GameDb
                     // limit is the number of entries
                     string jsonData = wc.DownloadString($@"https://pokeapi.co/api/v2/pokemon/{name.ToLower()}/");
 
-                    // method 1
-                    //JObject pokeDetails = JObject.Parse(jsonData);
-
-                    // method 2 of deserialization
+                    // deserialize JSON response to new class instance
                     PokeDetails poke = JsonConvert.DeserializeObject<PokeDetails>(jsonData);
 
+                    // image
                     ImgPokemon.Source = poke.sprites.front_default;
 
                     // assign to class variables
@@ -49,25 +72,34 @@ namespace GameDb
                     spDef = poke.stats[4].base_stat.ToString();
                     spd = poke.stats[5].base_stat.ToString();
 
+                    // assign values to labels
                     SetStatValues();
 
+                    // assign initial stat bar values
                     AdjustBars();
 
+                    // margins for bar resizing
                     AdjustMargins();
 
+                    // type check
                     if (poke.types.Count == 2)
                     {
                         LblType1.Text = ConvertToUpper(poke.types[0].type.name.ToString());
                         LblType2.Text = ConvertToUpper(poke.types[1].type.name.ToString());
 
-                        // need a method here to alter the color of the type to match
+                        // alter colors of labels
+                        ColorLabel(LblType1, LblType1.Text);
+                        ColorBars(typeColor);
+                        ColorLabel(LblType2, LblType2.Text);
                     }
                     else
                     {
                         LblType1.Text = ConvertToUpper(poke.types[0].type.name.ToString());
                         Grid.SetColumnSpan(LblType1, 4);
 
-                        // need a method here to alter the color of the type to match
+                        // alter label color
+                        ColorLabel(LblType1, LblType1.Text);
+                        ColorBars(typeColor);
                     }
 
                 }
@@ -78,11 +110,39 @@ namespace GameDb
             }
         }
 
+        private void ColorBars(Color typeColor)
+        {
+            BarHP.Stroke = new SolidColorBrush(typeColor);
+            BarAttack.Stroke = new SolidColorBrush(typeColor);
+            BarDefense.Stroke = new SolidColorBrush(typeColor);
+            BarSpecialAttack.Stroke = new SolidColorBrush(typeColor);
+            BarSpecialDefense.Stroke = new SolidColorBrush(typeColor);
+            BarSpeed.Stroke = new SolidColorBrush(typeColor);
+        }
+
+        // will navigate to the type page
+        private void LblType1_Tapped(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ColorLabel(Label lblType, string text)
+        {
+            foreach (var colorType in colorDictionary)
+            {
+                if (colorType.Key == text)
+                {
+                    lblType.BackgroundColor = colorType.Value;
+                    typeColor = colorType.Value;
+                    lblType.TextColor = Color.White;
+                }
+            }
+        }
+
         // adjusts stat bars
         private void AdjustBars()
         {
             // ratio, max value of 200, calculate a percentage of that
-
             BarHP.X2 = MaxStat(double.Parse(health));
             BarAttack.X2 = MaxStat(double.Parse(attack));
             BarDefense.X2 = MaxStat(double.Parse(defense));

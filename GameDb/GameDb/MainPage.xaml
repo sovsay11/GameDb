@@ -11,7 +11,15 @@
                    TextChanged="EntName_TextChanged"/>
         </ContentView>
 
-        <ListView x:Name="LstViewPokemon"/>
+        <ListView x:Name="LstViewPokemon">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding}"
+                              TextColor="Black"
+                              DetailColor="Black"/>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
 
         <!-- save this for later
         <ScrollView>

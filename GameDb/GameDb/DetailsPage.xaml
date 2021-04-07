@@ -4,7 +4,7 @@
              x:Class="GameDb.DetailsPage">
     <ContentPage.Content>
         <ScrollView>
-            <Grid BackgroundColor="AntiqueWhite">
+            <Grid x:Name="DetailsGrid" BackgroundColor="LightGray">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
@@ -179,7 +179,11 @@
                        FontSize="20"
                        Grid.Row="9"
                        Grid.ColumnSpan="2"
-                       HorizontalTextAlignment="Center"/>
+                       HorizontalTextAlignment="Center">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="LblType1_Tapped"/>
+                    </Label.GestureRecognizers>
+                </Label>
                 <Label x:Name="LblType2"
                        FontSize="20"
                        Grid.Row="9"
