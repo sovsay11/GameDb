@@ -19,9 +19,31 @@ namespace GameDb
     {
         // local variables for stats
         string pokeName, health, attack, defense, spAtk, spDef, spd;
-        Dictionary<string, Color> pokeTypes = new Dictionary<string, Color>();
-        PokeType pokeType;
+        List<PokeType> pokeTypes = new List<PokeType>();
+        PokeType pokeType1, pokeType2;
         Color typeColor;
+
+        Dictionary<string, PokeType> typeDict = new Dictionary<string, PokeType>
+        {
+            { "Normal", new Normal() },
+                { "Fire", new Fire() },
+                { "Water", new Water() },
+                { "Electric", new Electric() },
+                { "Grass", new Grass() },
+                { "Ice", new Ice() },
+                { "Fighting", new Fighting() },
+                { "Poison", new Poison() },
+                { "Ground", new Ground() },
+                { "Flying", new Flying() },
+                { "Psychic", new Psychic() },
+                { "Bug", new Bug() },
+                { "Rock", new Rock() },
+                { "Ghost", new Ghost() },
+                { "Dragon", new Dragon() },
+                { "Dark", new Dark() },
+                { "Steel", new Steel() },
+                { "Fairy", new Fairy() },
+        };
 
         // dictionary for colors and type match
         Dictionary<string, Color> colorDictionary = new Dictionary<string, Color>
@@ -89,13 +111,16 @@ namespace GameDb
                         LblType1.Text = ConvertToUpper(poke.types[0].type.name.ToString());
                         LblType2.Text = ConvertToUpper(poke.types[1].type.name.ToString());
 
-                        // alter colors of labels
-                        ColorLabel(LblType1, LblType1.Text);
-                        ColorBars(typeColor);
-                        ColorLabel(LblType2, LblType2.Text);
+                        pokeType1 = CreateType(LblType1.Text);
+                        pokeType2 = CreateType(LblType2.Text);
 
-                        pokeTypes.Add(LblType1.Text, GetColorCode(LblType1.Text));
-                        pokeTypes.Add(LblType2.Text, GetColorCode(LblType2.Text));
+                        // alter colors of labels
+                        ColorLabel(LblType1, pokeType1.name);
+                        ColorBars(typeColor);
+                        ColorLabel(LblType2, pokeType2.name);
+
+                        pokeTypes.Add(pokeType1);
+                        pokeTypes.Add(pokeType2);
                     }
                     else
                     {
@@ -103,11 +128,13 @@ namespace GameDb
                         LblType1.Text = ConvertToUpper(poke.types[0].type.name.ToString());
                         Grid.SetColumnSpan(LblType1, 4);
 
+                        pokeType1 = CreateType(LblType1.Text);
+
                         // alter label color
-                        ColorLabel(LblType1, LblType1.Text);
+                        ColorLabel(LblType1, pokeType1.name);
                         ColorBars(typeColor);
 
-                        pokeTypes.Add(LblType1.Text, GetColorCode(LblType1.Text));
+                        pokeTypes.Add(pokeType1);
                     }
 
                 }
@@ -116,6 +143,20 @@ namespace GameDb
                     throw;
                 }
             }
+        }
+
+        private PokeType CreateType(string text)
+        {
+            PokeType poke;
+            foreach (var item in typeDict)
+            {
+                if (text == item.Key)
+                {
+                    poke = item.Value;
+                    return poke;
+                }
+            }
+            return new Normal();
         }
 
         private void ColorBars(Color typeColor)

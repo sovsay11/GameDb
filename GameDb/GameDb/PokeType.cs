@@ -5,7 +5,7 @@ using System.Text;
 
 namespace GameDb
 {
-    abstract class PokeType
+    public abstract class PokeType
     {
         //Dictionary<string, Color> colorDictionary = new Dictionary<string, Color>
         //    {

@@ -12,7 +12,7 @@ namespace GameDb
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class TypesPage : ContentPage
     {
-        public TypesPage(Dictionary<string, Color> pokeTypes)
+        public TypesPage(List<PokeType> pokeTypes)
         {
             InitializeComponent();
 
@@ -27,7 +27,7 @@ namespace GameDb
             ShowWeakTypes(pokeTypes);
         }
 
-        private void ShowVulnerableTypes(Dictionary<string, Color> pokeTypes)
+        private void ShowVulnerableTypes(List<PokeType> pokeTypes)
         {
             // adding labels to the new grid
             int i = 0;
@@ -35,8 +35,8 @@ namespace GameDb
             {
                 Label tempType = new Label
                 {
-                    Text = item.Key,
-                    BackgroundColor = item.Value,
+                    Text = item.name,
+                    BackgroundColor = item.color,
                     TextColor = Color.White,
                     FontSize = 18,
                     VerticalTextAlignment = TextAlignment.Center,
@@ -51,7 +51,7 @@ namespace GameDb
             }
         }
 
-        private void ShowStrongTypes(Dictionary<string, Color> pokeTypes)
+        private void ShowStrongTypes(List<PokeType> pokeTypes)
         {
             // adding labels to the new grid
             int i = 0;
@@ -59,8 +59,8 @@ namespace GameDb
             {
                 Label tempType = new Label
                 {
-                    Text = item.Key,
-                    BackgroundColor = item.Value,
+                    Text = item.name,
+                    BackgroundColor = item.color,
                     TextColor = Color.White,
                     FontSize = 18,
                     VerticalTextAlignment = TextAlignment.Center,
@@ -75,7 +75,7 @@ namespace GameDb
             }
         }
 
-        private void ShowResistantTypes(Dictionary<string, Color> pokeTypes)
+        private void ShowResistantTypes(List<PokeType> pokeTypes)
         {
             // adding labels to the new grid
             int i = 0;
@@ -83,8 +83,8 @@ namespace GameDb
             {
                 Label tempType = new Label
                 {
-                    Text = item.Key,
-                    BackgroundColor = item.Value,
+                    Text = item.name,
+                    BackgroundColor = item.color,
                     TextColor = Color.White,
                     FontSize = 18,
                     VerticalTextAlignment = TextAlignment.Center,
@@ -99,7 +99,7 @@ namespace GameDb
             }
         }
 
-        private void ShowWeakTypes(Dictionary<string, Color> pokeTypes)
+        private void ShowWeakTypes(List<PokeType> pokeTypes)
         {
             // adding labels to the new grid
             int i = 0;
@@ -107,8 +107,8 @@ namespace GameDb
             {
                 Label tempType = new Label
                 {
-                    Text = item.Key,
-                    BackgroundColor = item.Value,
+                    Text = item.name,
+                    BackgroundColor = item.color,
                     TextColor = Color.White,
                     FontSize = 18,
                     VerticalTextAlignment = TextAlignment.Center,
@@ -123,7 +123,7 @@ namespace GameDb
             }
         }
 
-        private void ShowMainTypes(Dictionary<string, Color> pokeTypes)
+        private void ShowMainTypes(List<PokeType> pokeTypes)
         {
             // adding labels to the new grid
             int i = 0;
@@ -131,8 +131,8 @@ namespace GameDb
             {
                 Label tempType = new Label
                 {
-                    Text = item.Key,
-                    BackgroundColor = item.Value,
+                    Text = item.name,
+                    BackgroundColor = item.color,
                     TextColor = Color.White,
                     FontSize = 18,
                     VerticalTextAlignment = TextAlignment.Center,
