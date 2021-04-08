@@ -20,6 +20,7 @@ namespace GameDb
         // local variables for stats
         string pokeName, health, attack, defense, spAtk, spDef, spd;
         Dictionary<string, Color> pokeTypes = new Dictionary<string, Color>();
+        PokeType pokeType;
         Color typeColor;
 
         // dictionary for colors and type match

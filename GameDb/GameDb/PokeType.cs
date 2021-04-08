@@ -38,19 +38,72 @@ namespace GameDb
         public Dictionary<string, double> weaknesses { get; set; }
 
         // might not need these methods
-        public void GetWeaknesses()
-        {
+        //public void GetWeaknesses()
+        //{
 
+        //}
+
+        //public void GetStrengths()
+        //{
+
+        //}
+
+        //public void GetResistances()
+        //{
+
+        //}
+    }
+
+    class Normal : PokeType
+    {
+        public Normal()
+        {
+            name = nameof(Normal);
+            color = Color.FromHex("AAAA99");
+
+            vulnerabilities = new Dictionary<string, double>
+            {
+                { "Fighting", 2}
+            };
+            strengths = new Dictionary<string, double>
+            {
+                { "None", 0}
+            };
+            weaknesses = new Dictionary<string, double>
+            {
+                { "Rock", 0.5}
+            };
+            resistances = new Dictionary<string, double>
+            {
+                { "Ghost", 0}
+            };
         }
+    }
 
-        public void GetStrengths()
+    class Fire : PokeType
+    {
+        public Fire()
         {
+            name = nameof(Fire);
+            color = Color.FromHex("FF4422");
 
-        }
-
-        public void GetResistances()
-        {
-
+            vulnerabilities = new Dictionary<string, double>
+            {
+                { "Electric", 2},
+                { "Grass", 2}
+            };
+            strengths = new Dictionary<string, double>
+            {
+                { "Rock", 2}
+            };
+            weaknesses = new Dictionary<string, double>
+            {
+                { "Water", 0.5}
+            };
+            resistances = new Dictionary<string, double>
+            {
+                { "Water", 0.5}
+            };
         }
     }
 
@@ -58,24 +111,420 @@ namespace GameDb
     {
         public Water()
         {
-            name = "Water";
+            name = nameof(Water);
             color = Color.FromHex("3399FF");
 
             vulnerabilities = new Dictionary<string, double>
             {
-                { "Electric", 2}
+                { "Electric", 2},
+                { "Grass", 2}
             };
             strengths = new Dictionary<string, double>
             {
-                { "Electric", 2}
+                { "Rock", 2}
             };
             weaknesses = new Dictionary<string, double>
             {
-                { "Electric", 2}
+                { "Water", 0.5}
             };
             resistances = new Dictionary<string, double>
             {
-                { "Electric", 2}
+                { "Water", 0.5}
+            };
+        }
+    }
+
+    class Electric : PokeType
+    {
+        public Electric()
+        {
+            name = nameof(Electric);
+            color = Color.FromHex("FFCC33");
+
+            vulnerabilities = new Dictionary<string, double>
+            {
+                { "Electric", 2},
+                { "Grass", 2}
+            };
+            strengths = new Dictionary<string, double>
+            {
+                { "Rock", 2}
+            };
+            weaknesses = new Dictionary<string, double>
+            {
+                { "Water", 0.5}
+            };
+            resistances = new Dictionary<string, double>
+            {
+                { "Water", 0.5}
+            };
+        }
+    }
+
+    class Grass : PokeType
+    {
+        public Grass()
+        {
+            name = nameof(Grass);
+            color = Color.FromHex("77CC55");
+
+            vulnerabilities = new Dictionary<string, double>
+            {
+                { "Electric", 2},
+                { "Grass", 2}
+            };
+            strengths = new Dictionary<string, double>
+            {
+                { "Rock", 2}
+            };
+            weaknesses = new Dictionary<string, double>
+            {
+                { "Water", 0.5}
+            };
+            resistances = new Dictionary<string, double>
+            {
+                { "Water", 0.5}
+            };
+        }
+    }
+
+    class Ice : PokeType
+    {
+        public Ice()
+        {
+            name = nameof(Ice);
+            color = Color.FromHex("66CCFF");
+
+            vulnerabilities = new Dictionary<string, double>
+            {
+                { "Electric", 2},
+                { "Grass", 2}
+            };
+            strengths = new Dictionary<string, double>
+            {
+                { "Rock", 2}
+            };
+            weaknesses = new Dictionary<string, double>
+            {
+                { "Water", 0.5}
+            };
+            resistances = new Dictionary<string, double>
+            {
+                { "Water", 0.5}
+            };
+        }
+    }
+
+    class Fighting : PokeType
+    {
+        public Fighting()
+        {
+            name = nameof(Fighting);
+            color = Color.FromHex("BB5544");
+
+            vulnerabilities = new Dictionary<string, double>
+            {
+                { "Electric", 2},
+                { "Grass", 2}
+            };
+            strengths = new Dictionary<string, double>
+            {
+                { "Rock", 2}
+            };
+            weaknesses = new Dictionary<string, double>
+            {
+                { "Water", 0.5}
+            };
+            resistances = new Dictionary<string, double>
+            {
+                { "Water", 0.5}
+            };
+        }
+    }
+    class Poison : PokeType
+    {
+        public Poison()
+        {
+            name = nameof(Poison);
+            color = Color.FromHex("AA5599");
+
+            vulnerabilities = new Dictionary<string, double>
+            {
+                { "Electric", 2},
+                { "Grass", 2}
+            };
+            strengths = new Dictionary<string, double>
+            {
+                { "Rock", 2}
+            };
+            weaknesses = new Dictionary<string, double>
+            {
+                { "Water", 0.5}
+            };
+            resistances = new Dictionary<string, double>
+            {
+                { "Water", 0.5}
+            };
+        }
+    }
+    class Ground : PokeType
+    {
+        public Ground()
+        {
+            name = nameof(Ground);
+            color = Color.FromHex("DDBB55");
+
+            vulnerabilities = new Dictionary<string, double>
+            {
+                { "Electric", 2},
+                { "Grass", 2}
+            };
+            strengths = new Dictionary<string, double>
+            {
+                { "Rock", 2}
+            };
+            weaknesses = new Dictionary<string, double>
+            {
+                { "Water", 0.5}
+            };
+            resistances = new Dictionary<string, double>
+            {
+                { "Water", 0.5}
+            };
+        }
+    }
+    class Flying : PokeType
+    {
+        public Flying()
+        {
+            name = nameof(Flying);
+            color = Color.FromHex("8899FF");
+
+            vulnerabilities = new Dictionary<string, double>
+            {
+                { "Electric", 2},
+                { "Grass", 2}
+            };
+            strengths = new Dictionary<string, double>
+            {
+                { "Rock", 2}
+            };
+            weaknesses = new Dictionary<string, double>
+            {
+                { "Water", 0.5}
+            };
+            resistances = new Dictionary<string, double>
+            {
+                { "Water", 0.5}
+            };
+        }
+    }
+    class Psychic : PokeType
+    {
+        public Psychic()
+        {
+            name = nameof(Psychic);
+            color = Color.FromHex("FF5599");
+
+            vulnerabilities = new Dictionary<string, double>
+            {
+                { "Electric", 2},
+                { "Grass", 2}
+            };
+            strengths = new Dictionary<string, double>
+            {
+                { "Rock", 2}
+            };
+            weaknesses = new Dictionary<string, double>
+            {
+                { "Water", 0.5}
+            };
+            resistances = new Dictionary<string, double>
+            {
+                { "Water", 0.5}
+            };
+        }
+    }
+    class Bug : PokeType
+    {
+        public Bug()
+        {
+            name = nameof(Bug);
+            color = Color.FromHex("AABB22");
+
+            vulnerabilities = new Dictionary<string, double>
+            {
+                { "Electric", 2},
+                { "Grass", 2}
+            };
+            strengths = new Dictionary<string, double>
+            {
+                { "Rock", 2}
+            };
+            weaknesses = new Dictionary<string, double>
+            {
+                { "Water", 0.5}
+            };
+            resistances = new Dictionary<string, double>
+            {
+                { "Water", 0.5}
+            };
+        }
+    }
+    class Rock : PokeType
+    {
+        public Rock()
+        {
+            name = nameof(Rock);
+            color = Color.FromHex("BBAA66");
+
+            vulnerabilities = new Dictionary<string, double>
+            {
+                { "Electric", 2},
+                { "Grass", 2}
+            };
+            strengths = new Dictionary<string, double>
+            {
+                { "Rock", 2}
+            };
+            weaknesses = new Dictionary<string, double>
+            {
+                { "Water", 0.5}
+            };
+            resistances = new Dictionary<string, double>
+            {
+                { "Water", 0.5}
+            };
+        }
+    }
+
+    class Ghost : PokeType
+    {
+        public Ghost()
+        {
+            name = nameof(Ghost);
+            color = Color.FromHex("6666BB");
+
+            vulnerabilities = new Dictionary<string, double>
+            {
+                { "Electric", 2},
+                { "Grass", 2}
+            };
+            strengths = new Dictionary<string, double>
+            {
+                { "Rock", 2}
+            };
+            weaknesses = new Dictionary<string, double>
+            {
+                { "Water", 0.5}
+            };
+            resistances = new Dictionary<string, double>
+            {
+                { "Water", 0.5}
+            };
+        }
+    }
+    class Dragon : PokeType
+    {
+        public Dragon()
+        {
+            name = nameof(Dragon);
+            color = Color.FromHex("7766EE");
+
+            vulnerabilities = new Dictionary<string, double>
+            {
+                { "Electric", 2},
+                { "Grass", 2}
+            };
+            strengths = new Dictionary<string, double>
+            {
+                { "Rock", 2}
+            };
+            weaknesses = new Dictionary<string, double>
+            {
+                { "Water", 0.5}
+            };
+            resistances = new Dictionary<string, double>
+            {
+                { "Water", 0.5}
+            };
+        }
+    }
+    class Dark : PokeType
+    {
+        public Dark()
+        {
+            name = nameof(Dark);
+            color = Color.FromHex("775544");
+
+            vulnerabilities = new Dictionary<string, double>
+            {
+                { "Electric", 2},
+                { "Grass", 2}
+            };
+            strengths = new Dictionary<string, double>
+            {
+                { "Rock", 2}
+            };
+            weaknesses = new Dictionary<string, double>
+            {
+                { "Water", 0.5}
+            };
+            resistances = new Dictionary<string, double>
+            {
+                { "Water", 0.5}
+            };
+        }
+    }
+    class Steel : PokeType
+    {
+        public Steel()
+        {
+            name = nameof(Steel);
+            color = Color.FromHex("AAAABB");
+
+            vulnerabilities = new Dictionary<string, double>
+            {
+                { "Electric", 2},
+                { "Grass", 2}
+            };
+            strengths = new Dictionary<string, double>
+            {
+                { "Rock", 2}
+            };
+            weaknesses = new Dictionary<string, double>
+            {
+                { "Water", 0.5}
+            };
+            resistances = new Dictionary<string, double>
+            {
+                { "Water", 0.5}
+            };
+        }
+    }
+    class Fairy : PokeType
+    {
+        public Fairy()
+        {
+            name = nameof(Fairy);
+            color = Color.FromHex("EE99EE");
+
+            vulnerabilities = new Dictionary<string, double>
+            {
+                { "Electric", 2},
+                { "Grass", 2}
+            };
+            strengths = new Dictionary<string, double>
+            {
+                { "Rock", 2}
+            };
+            weaknesses = new Dictionary<string, double>
+            {
+                { "Water", 0.5}
+            };
+            resistances = new Dictionary<string, double>
+            {
+                { "Water", 0.5}
             };
         }
     }
