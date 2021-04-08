@@ -123,12 +123,12 @@ namespace GameDb
         // will navigate to the type page
         private void LblType1_Tapped(object sender, EventArgs e)
         {
-
+            Navigation.PushAsync(new TypesPage());
         }
 
         private void LblType2_Tapped(object sender, EventArgs e)
         {
-
+            Navigation.PushAsync(new TypesPage());
         }
 
         private void ColorLabel(Label lblType, string text)
