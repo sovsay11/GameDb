@@ -19,6 +19,7 @@ namespace GameDb
     {
         // local variables for stats
         string pokeName, health, attack, defense, spAtk, spDef, spd;
+        List<string> pokeTypes = new List<string>();
         Color typeColor;
 
         // dictionary for colors and type match
@@ -91,15 +92,21 @@ namespace GameDb
                         ColorLabel(LblType1, LblType1.Text);
                         ColorBars(typeColor);
                         ColorLabel(LblType2, LblType2.Text);
+
+                        pokeTypes.Add(LblType1.Text);
+                        pokeTypes.Add(LblType2.Text);
                     }
                     else
                     {
+                        LblType2.IsEnabled = false;
                         LblType1.Text = ConvertToUpper(poke.types[0].type.name.ToString());
                         Grid.SetColumnSpan(LblType1, 4);
 
                         // alter label color
                         ColorLabel(LblType1, LblType1.Text);
                         ColorBars(typeColor);
+
+                        pokeTypes.Add(LblType1.Text);
                     }
 
                 }
@@ -123,12 +130,12 @@ namespace GameDb
         // will navigate to the type page
         private void LblType1_Tapped(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new TypesPage());
+            Navigation.PushAsync(new TypesPage(pokeTypes));
         }
 
         private void LblType2_Tapped(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new TypesPage());
+            Navigation.PushAsync(new TypesPage(pokeTypes));
         }
 
         private void ColorLabel(Label lblType, string text)
