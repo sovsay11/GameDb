@@ -189,7 +189,11 @@
                        Grid.Row="9"
                        Grid.Column="2"
                        Grid.ColumnSpan="2"
-                       HorizontalTextAlignment="Center"/>
+                       HorizontalTextAlignment="Center">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="LblType2_Tapped"/>
+                    </Label.GestureRecognizers>
+                </Label>
             </Grid>
         </ScrollView>
     </ContentPage.Content>

@@ -126,6 +126,11 @@ namespace GameDb
 
         }
 
+        private void LblType2_Tapped(object sender, EventArgs e)
+        {
+
+        }
+
         private void ColorLabel(Label lblType, string text)
         {
             foreach (var colorType in colorDictionary)
