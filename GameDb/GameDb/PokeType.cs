@@ -32,10 +32,12 @@ namespace GameDb
         public string name { get; set; }
         public Color color { get; set; }
 
-        public Dictionary<PokeType, double> weaknesses { get; set; }
-        public Dictionary<PokeType, double> resistances { get; set; }
-        public Dictionary<PokeType, double> strengths { get; set; }
+        public Dictionary<string, double> vulnerabilities { get; set; }
+        public Dictionary<string, double> strengths { get; set; }
+        public Dictionary<string, double> resistances { get; set; }
+        public Dictionary<string, double> weaknesses { get; set; }
 
+        // might not need these methods
         public void GetWeaknesses()
         {
 
@@ -59,9 +61,21 @@ namespace GameDb
             name = "Water";
             color = Color.FromHex("3399FF");
 
-            weaknesses = new Dictionary<PokeType, double>
+            vulnerabilities = new Dictionary<string, double>
             {
-                { new Water(), 2}
+                { "Electric", 2}
+            };
+            strengths = new Dictionary<string, double>
+            {
+                { "Electric", 2}
+            };
+            weaknesses = new Dictionary<string, double>
+            {
+                { "Electric", 2}
+            };
+            resistances = new Dictionary<string, double>
+            {
+                { "Electric", 2}
             };
         }
     }

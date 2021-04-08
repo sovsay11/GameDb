@@ -9,18 +9,27 @@
                    FontAttributes="Bold"/>
                 <Grid x:Name="GridMainTypes" BackgroundColor="DimGray">
                 </Grid>
-                <Label Text="Weak Against:" FontSize="30" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
-                   FontAttributes="Bold"/>
-                <Grid x:Name="GridWeakTypes" BackgroundColor="DimGray">
-                </Grid>
-                <Label Text="Resistant Against:" FontSize="30" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
-                   FontAttributes="Bold"/>
-                <Grid x:Name="GridResistantTypes" BackgroundColor="DimGray">
-                </Grid>
+                
                 <Label Text="Strong Against:" FontSize="30" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
                    FontAttributes="Bold"/>
                 <Grid x:Name="GridStrongTypes" BackgroundColor="DimGray">
                 </Grid>
+                
+                <Label Text="Vulnerable To:" FontSize="30" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
+                   FontAttributes="Bold"/>
+                <Grid x:Name="GridVulnerableTypes" BackgroundColor="DimGray">
+                </Grid>
+                
+                <Label Text="Resistant Against:" FontSize="30" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
+                   FontAttributes="Bold"/>
+                <Grid x:Name="GridResistantTypes" BackgroundColor="DimGray">
+                </Grid>
+                
+                <Label Text="Weak Against:" FontSize="30" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
+                   FontAttributes="Bold"/>
+                <Grid x:Name="GridWeakTypes" BackgroundColor="DimGray">
+                </Grid>
+                
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

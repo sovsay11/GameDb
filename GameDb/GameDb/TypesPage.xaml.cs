@@ -16,13 +16,39 @@ namespace GameDb
         {
             InitializeComponent();
 
-            ShowMainTypes(pokeTypes);
+            ShowVulnerableTypes(pokeTypes);
 
-            ShowWeakTypes(pokeTypes);
+            ShowStrongTypes(pokeTypes);
+
+            ShowMainTypes(pokeTypes);
 
             ShowResistantTypes(pokeTypes);
 
-            ShowStrongTypes(pokeTypes);
+            ShowWeakTypes(pokeTypes);
+        }
+
+        private void ShowVulnerableTypes(Dictionary<string, Color> pokeTypes)
+        {
+            // adding labels to the new grid
+            int i = 0;
+            foreach (var item in pokeTypes)
+            {
+                Label tempType = new Label
+                {
+                    Text = item.Key,
+                    BackgroundColor = item.Value,
+                    TextColor = Color.White,
+                    FontSize = 18,
+                    VerticalTextAlignment = TextAlignment.Center,
+                    HorizontalTextAlignment = TextAlignment.Center,
+                    Padding = 10,
+                    Margin = 10,
+                };
+                GridVulnerableTypes.Children.Add(tempType);
+                Grid.SetRow(tempType, 0);
+                Grid.SetColumn(tempType, i);
+                i += 1;
+            }
         }
 
         private void ShowStrongTypes(Dictionary<string, Color> pokeTypes)
