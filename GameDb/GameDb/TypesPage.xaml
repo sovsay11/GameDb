@@ -3,9 +3,25 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="GameDb.TypesPage">
     <ContentPage.Content>
-        <StackLayout x:Name="SLPokeTypes">
-            <Grid x:Name="GridMainTypes">
-            </Grid>
-        </StackLayout>
+        <ScrollView>
+            <StackLayout x:Name="SLPokeTypes" BackgroundColor="LightGray">
+                <Label Text="Main Types" FontSize="30" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
+                   FontAttributes="Bold"/>
+                <Grid x:Name="GridMainTypes" BackgroundColor="DimGray">
+                </Grid>
+                <Label Text="Weak Against:" FontSize="30" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
+                   FontAttributes="Bold"/>
+                <Grid x:Name="GridWeakTypes" BackgroundColor="DimGray">
+                </Grid>
+                <Label Text="Resistant Against:" FontSize="30" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
+                   FontAttributes="Bold"/>
+                <Grid x:Name="GridResistantTypes" BackgroundColor="DimGray">
+                </Grid>
+                <Label Text="Strong Against:" FontSize="30" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
+                   FontAttributes="Bold"/>
+                <Grid x:Name="GridStrongTypes" BackgroundColor="DimGray">
+                </Grid>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

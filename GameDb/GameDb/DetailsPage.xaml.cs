@@ -19,7 +19,7 @@ namespace GameDb
     {
         // local variables for stats
         string pokeName, health, attack, defense, spAtk, spDef, spd;
-        List<string> pokeTypes = new List<string>();
+        Dictionary<string, Color> pokeTypes = new Dictionary<string, Color>();
         Color typeColor;
 
         // dictionary for colors and type match
@@ -93,8 +93,8 @@ namespace GameDb
                         ColorBars(typeColor);
                         ColorLabel(LblType2, LblType2.Text);
 
-                        pokeTypes.Add(LblType1.Text);
-                        pokeTypes.Add(LblType2.Text);
+                        pokeTypes.Add(LblType1.Text, GetColorCode(LblType1.Text));
+                        pokeTypes.Add(LblType2.Text, GetColorCode(LblType2.Text));
                     }
                     else
                     {
@@ -106,7 +106,7 @@ namespace GameDb
                         ColorLabel(LblType1, LblType1.Text);
                         ColorBars(typeColor);
 
-                        pokeTypes.Add(LblType1.Text);
+                        pokeTypes.Add(LblType1.Text, GetColorCode(LblType1.Text));
                     }
 
                 }
@@ -140,15 +140,22 @@ namespace GameDb
 
         private void ColorLabel(Label lblType, string text)
         {
+            Color color = GetColorCode(text);
+            lblType.BackgroundColor = color;
+            typeColor = color;
+            lblType.TextColor = Color.White;
+        }
+
+        private Color GetColorCode(string text)
+        {
             foreach (var colorType in colorDictionary)
             {
                 if (colorType.Key == text)
                 {
-                    lblType.BackgroundColor = colorType.Value;
-                    typeColor = colorType.Value;
-                    lblType.TextColor = Color.White;
+                    return colorType.Value;
                 }
             }
+            return Color.White;
         }
 
         // adjusts stat bars
