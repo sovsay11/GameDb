@@ -12,22 +12,22 @@
                 
                 <Label Text="Strong Against:" FontSize="30" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
                    FontAttributes="Bold"/>
-                <Grid x:Name="GridStrongTypes" BackgroundColor="DimGray">
+                <Grid x:Name="GridStrongTypes" BackgroundColor="DimGray" Padding="0, 10, 0, 10">
                 </Grid>
                 
                 <Label Text="Vulnerable To:" FontSize="30" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
                    FontAttributes="Bold"/>
-                <Grid x:Name="GridVulnerableTypes" BackgroundColor="DimGray">
+                <Grid x:Name="GridVulnerableTypes" BackgroundColor="DimGray" Padding="0, 10, 0, 10">
                 </Grid>
                 
                 <Label Text="Resistant Against:" FontSize="30" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
                    FontAttributes="Bold"/>
-                <Grid x:Name="GridResistantTypes" BackgroundColor="DimGray">
+                <Grid x:Name="GridResistantTypes" BackgroundColor="DimGray" Padding="0, 10, 0, 10">
                 </Grid>
                 
                 <Label Text="Weak Against:" FontSize="30" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
                    FontAttributes="Bold"/>
-                <Grid x:Name="GridWeakTypes" BackgroundColor="DimGray">
+                <Grid x:Name="GridWeakTypes" BackgroundColor="DimGray" Padding="0, 10, 0, 10">
                 </Grid>
                 
             </StackLayout>

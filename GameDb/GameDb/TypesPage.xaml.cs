@@ -66,11 +66,12 @@ namespace GameDb
                         Text = $"{attrCategory.Key} ×{attrCategory.Value}",
                         BackgroundColor = pokeTypes[0].GetColor(attrCategory.Key),
                         TextColor = Color.White,
-                        FontSize = 15,
+                        FontSize = 14,
+                        FontAttributes = FontAttributes.Bold,
                         VerticalTextAlignment = TextAlignment.Center,
                         HorizontalTextAlignment = TextAlignment.Center,
                         Padding = 10,
-                        Margin = 10,
+                        Margin = 5,
                     };
 
                     if (attrCategory.Value == 4 || attrCategory.Value == 0 || attrCategory.Value == .25)
@@ -110,12 +111,12 @@ namespace GameDb
                         Text = $"{attrCategory.Key} ×{attrCategory.Value}",
                         BackgroundColor = pokeTypes[0].GetColor(attrCategory.Key),
                         TextColor = Color.White,
-                        FontSize = 15,
+                        FontSize = 14,
                         FontAttributes = FontAttributes.Bold,
                         VerticalTextAlignment = TextAlignment.Center,
                         HorizontalTextAlignment = TextAlignment.Center,
                         Padding = 10,
-                        Margin = 10,
+                        Margin = 5,
                     };
 
                     if (attrCategory.Value == 4 || attrCategory.Value == 0 || attrCategory.Value == .25)
