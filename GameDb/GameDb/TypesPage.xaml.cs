@@ -28,6 +28,8 @@ namespace GameDb
 
         private void AddTypeLabels(List<PokeType> pokeTypes, string attribute)
         {
+            // remember that v goes with r and s goes with w
+            // setting grids
             Grid generalGrid;
             if (attribute == "v")
             {
@@ -46,17 +48,54 @@ namespace GameDb
                 generalGrid = GridWeakTypes;
             }
 
-            // adding labels to the new grid
-            int row = 0;
-            int column = 0;
-            foreach (var type in pokeTypes)
+            // assuming single type
+            if (pokeTypes.Count == 1)
             {
-                foreach (var attrCategory in type.GetAttribute(attribute))
+                // adding labels to the new grid
+                int row = 0;
+                int column = 0;
+                foreach (var attrCategory in pokeTypes[0].GetAttribute(attribute))
                 {
                     Label tempType = new Label
                     {
                         Text = $"{attrCategory.Key} ×{attrCategory.Value}",
-                        BackgroundColor = type.GetColor(attrCategory.Key),
+                        BackgroundColor = pokeTypes[0].GetColor(attrCategory.Key),
+                        TextColor = Color.White,
+                        FontSize = 15,
+                        VerticalTextAlignment = TextAlignment.Center,
+                        HorizontalTextAlignment = TextAlignment.Center,
+                        Padding = 10,
+                        Margin = 10,
+                    };
+                    Grid.SetRow(tempType, row);
+                    Grid.SetColumn(tempType, column);
+                    if (column == 2)
+                    {
+                        column = 0;
+                        row += 1;
+                    }
+                    else
+                    {
+                        column += 1;
+                    }
+                    generalGrid.Children.Add(tempType);
+                }
+
+            }
+            // dual types
+            else
+            {
+                Dictionary<string, double> combinedAttributes = pokeTypes[0].GetCombinedAttributes(pokeTypes[0], pokeTypes[1], attribute);
+
+                // adding labels to the new grid
+                int row = 0;
+                int column = 0;
+                foreach (var attrCategory in combinedAttributes)
+                {
+                    Label tempType = new Label
+                    {
+                        Text = $"{attrCategory.Key} ×{attrCategory.Value}",
+                        BackgroundColor = pokeTypes[0].GetColor(attrCategory.Key),
                         TextColor = Color.White,
                         FontSize = 15,
                         VerticalTextAlignment = TextAlignment.Center,

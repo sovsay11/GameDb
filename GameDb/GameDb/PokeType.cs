@@ -62,6 +62,33 @@ namespace GameDb
                 return weaknesses;
             }
         }
+
+        public Dictionary<string, double> GetCombinedAttributes(PokeType type1, PokeType type2, string a1) // fire, flying, v
+        {
+            // let's say we have fire and flying, right?
+            // to figure out the total vulnerabilities, we go through the vulnerabilites of both
+            // and add them to a combined list
+            Dictionary<string, double> attributes1 = type1.GetAttribute(a1); // vulnerabilities
+            Dictionary<string, double> attributes2 = type2.GetAttribute(a1); // vulnerabilities
+            Dictionary<string, double> combinedAttributes = new Dictionary<string, double>(); // need to reset this
+
+            foreach (var att1 in attributes1) // checking each attribute in the first vuln of the first type
+            {
+                foreach (var att2 in attributes2)
+                {
+                    if (att1.Key == att2.Key) // if we find a match to the vuln of the first type, this works for all the super effective and super resistant stuff
+                    {
+                        combinedAttributes.Add(att1.Key, (att1.Value * att2.Value));
+                    }
+                    else
+                    {
+                        combinedAttributes.Add(att1.Key, att1.Value);
+                    }
+                }
+            }
+            return combinedAttributes;
+        }
+
     }
 
     class Normal : PokeType
