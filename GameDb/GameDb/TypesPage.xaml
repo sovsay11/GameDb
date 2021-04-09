@@ -5,7 +5,7 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout x:Name="SLPokeTypes" BackgroundColor="LightGray">
-                <Label Text="Main Types" FontSize="30" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
+                <Label Text="Main Type(s)" FontSize="30" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
                    FontAttributes="Bold"/>
                 <Grid x:Name="GridMainTypes" BackgroundColor="DimGray">
                 </Grid>
