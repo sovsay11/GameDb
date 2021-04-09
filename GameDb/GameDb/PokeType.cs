@@ -63,29 +63,72 @@ namespace GameDb
             }
         }
 
-        public Dictionary<string, double> GetCombinedAttributes(PokeType type1, PokeType type2, string a1) // fire, flying, v
+        public Dictionary<string, double> GetCombinedAttributes(PokeType type1, PokeType type2, string a1, string a2) // fire, flying, v, r
         {
             // let's say we have fire and flying, right?
             // to figure out the total vulnerabilities, we go through the vulnerabilites of both
             // and add them to a combined list
             Dictionary<string, double> attributes1 = type1.GetAttribute(a1); // vulnerabilities
             Dictionary<string, double> attributes2 = type2.GetAttribute(a1); // vulnerabilities
+            Dictionary<string, double> antiAttributes1 = type1.GetAttribute(a2); // resistances
+            Dictionary<string, double> antiAttributes2 = type2.GetAttribute(a2); // resistances
             Dictionary<string, double> combinedAttributes = new Dictionary<string, double>(); // need to reset this
+
+            //foreach (var att1 in attributes1) // checking each attribute in the first vuln of the first type
+            //{
+            //    if (attributes2.TryGetValue(att1.Key, out double sMultiplier)) // good for the super values
+            //    {
+            //        combinedAttributes.Add(att1.Key, (att1.Value * sMultiplier));
+            //    }
+            //    else if (antiAttributes2.TryGetValue(att1.Key, out double aMultiplier)) // check for vuln/resistance balancing
+            //    {
+            //        combinedAttributes.Add(att1.Key, (att1.Value * aMultiplier));
+            //    }
+            //    else // good for the first type standards
+            //    {
+            //        combinedAttributes.Add(att1.Key, att1.Value);
+            //    }
+            //}
+
+            //foreach (var att2 in attributes2)
+            //{
+            //    if (!combinedAttributes.ContainsKey(att2.Key))
+            //    {
+            //        combinedAttributes.Add(att2.Key, att2.Value);
+            //    }
+            //}
+            double multiplier;
 
             foreach (var att1 in attributes1) // checking each attribute in the first vuln of the first type
             {
-                foreach (var att2 in attributes2)
+                if (attributes2.TryGetValue(att1.Key, out multiplier)) // combining like vuln
                 {
-                    if (att1.Key == att2.Key) // if we find a match to the vuln of the first type, this works for all the super effective and super resistant stuff
+                    combinedAttributes.Add(att1.Key, att1.Value * multiplier);
+                }
+                else if (antiAttributes2.TryGetValue(att1.Key, out multiplier)) // combining vuln with resistance of other type
+                {
+                    combinedAttributes.Add(att1.Key, att1.Value * multiplier);
+                }
+                else // adding the rest for fire
+                {
+                    combinedAttributes.Add(att1.Key, att1.Value);
+                }
+            }
+            foreach (var att2 in attributes2)
+            {
+                if (!combinedAttributes.ContainsKey(att2.Key))
+                {
+                    if (antiAttributes1.TryGetValue(att2.Key, out multiplier)) // combining vuln with resistance of other type
                     {
-                        combinedAttributes.Add(att1.Key, (att1.Value * att2.Value));
+                        combinedAttributes.Add(att2.Key, (att2.Value * multiplier));
                     }
                     else
                     {
-                        combinedAttributes.Add(att1.Key, att1.Value);
+                        combinedAttributes.Add(att2.Key, att2.Value);
                     }
                 }
             }
+
             return combinedAttributes;
         }
 
@@ -213,7 +256,7 @@ namespace GameDb
                 { "Electric", 0.5 },
                 { "Grass", 0.5 },
                 { "Ground", 0 },
-                { "Dragon", 0 },
+                { "Dragon", 0.5 },
             };
             resistances = new Dictionary<string, double>
             {
