@@ -11,6 +11,31 @@ namespace GameDb
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class TypesPage : ContentPage
     {
+        List<PokeType> customTypes = new List<PokeType>();
+        bool customSwitch = false;
+
+        Dictionary<string, PokeType> typeDict = new Dictionary<string, PokeType>
+        {
+            { "Normal", new Normal() },
+                { "Fire", new Fire() },
+                { "Water", new Water() },
+                { "Electric", new Electric() },
+                { "Grass", new Grass() },
+                { "Ice", new Ice() },
+                { "Fighting", new Fighting() },
+                { "Poison", new Poison() },
+                { "Ground", new Ground() },
+                { "Flying", new Flying() },
+                { "Psychic", new Psychic() },
+                { "Bug", new Bug() },
+                { "Rock", new Rock() },
+                { "Ghost", new Ghost() },
+                { "Dragon", new Dragon() },
+                { "Dark", new Dark() },
+                { "Steel", new Steel() },
+                { "Fairy", new Fairy() },
+        };
+
         public TypesPage(List<PokeType> pokeTypes)
         {
             InitializeComponent();
@@ -195,25 +220,144 @@ namespace GameDb
 
         private void ShowMainTypes(List<PokeType> pokeTypes)
         {
-            // adding labels to the new grid
-            int i = 0;
-            foreach (var item in pokeTypes)
+            List<string> typeList = new List<string>
             {
-                Label tempType = new Label
+                { "Normal" },
+                { "Fire" },
+                { "Water" },
+                { "Electric" },
+                { "Grass" },
+                { "Ice" },
+                { "Fighting" },
+                { "Poison" },
+                { "Ground" },
+                { "Flying" },
+                { "Psychic" },
+                { "Bug" },
+                { "Rock" },
+                { "Ghost" },
+                { "Dragon" },
+                { "Dark" },
+                { "Steel" },
+                { "Fairy" },
+            };
+
+            if (pokeTypes.Count == 2)
+            {
+                PckrType1.ItemsSource = typeList;
+                PckrType2.ItemsSource = typeList;
+
+                PckrType1.SelectedItem = pokeTypes[0].name;
+                PckrType1.BackgroundColor = pokeTypes[0].color;
+
+                PckrType2.SelectedItem = pokeTypes[1].name;
+                PckrType2.BackgroundColor = pokeTypes[1].color;
+
+                customSwitch = true;
+            }
+            else
+            {
+                PckrType2.IsEnabled = false;
+
+                PckrType1.ItemsSource = typeList;
+                PckrType1.SelectedItem = pokeTypes[0].name;
+                PckrType1.BackgroundColor = pokeTypes[0].color;
+
+                Grid.SetColumnSpan(PckrType1, 2);
+
+                customSwitch = true;
+            }
+
+            // adding labels to the new grid
+            //int i = 0;
+            //foreach (var item in pokeTypes)
+            //{
+            //    Label tempType = new Label
+            //    {
+            //        Text = item.name,
+            //        BackgroundColor = item.color,
+            //        TextColor = Color.White,
+            //        FontSize = 18,
+            //        VerticalTextAlignment = TextAlignment.Center,
+            //        HorizontalTextAlignment = TextAlignment.Center,
+            //        Padding = 10,
+            //        Margin = 10,
+            //    };
+            //    GridMainTypes.Children.Add(tempType);
+            //    Grid.SetRow(tempType, 0);
+            //    Grid.SetColumn(tempType, i);
+            //    i += 1;
+            //}
+        }
+
+        private PokeType CreateType(string text)
+        {
+            PokeType poke;
+            foreach (var item in typeDict)
+            {
+                if (text == item.Key)
                 {
-                    Text = item.name,
-                    BackgroundColor = item.color,
-                    TextColor = Color.White,
-                    FontSize = 18,
-                    VerticalTextAlignment = TextAlignment.Center,
-                    HorizontalTextAlignment = TextAlignment.Center,
-                    Padding = 10,
-                    Margin = 10,
-                };
-                GridMainTypes.Children.Add(tempType);
-                Grid.SetRow(tempType, 0);
-                Grid.SetColumn(tempType, i);
-                i += 1;
+                    poke = item.Value;
+                    return poke;
+                }
+            }
+            return new Normal();
+        }
+
+        private void PckrType1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (customSwitch)
+            {
+                if (PckrType2.SelectedIndex > -1)
+                {
+                    string chosenType1 = PckrType1.SelectedItem.ToString();
+                    string chosenType2 = PckrType2.SelectedItem.ToString();
+
+                    PokeType type1 = CreateType(chosenType1);
+                    PokeType type2 = CreateType(chosenType2);
+
+                    customTypes = new List<PokeType>();
+
+                    customTypes.Add(type1);
+                    customTypes.Add(type2);
+
+                    Navigation.PopAsync();
+
+                    Navigation.PushAsync(new TypesPage(customTypes));
+                }
+                else
+                {
+                    string chosenType = PckrType1.SelectedItem.ToString();
+
+                    PokeType type1 = CreateType(chosenType);
+
+                    customTypes.Add(type1);
+
+                    Navigation.PopAsync();
+
+                    Navigation.PushAsync(new TypesPage(customTypes));
+                }
+            }
+        }
+
+        private void PckrType2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (customSwitch)
+            {
+                string chosenType1 = PckrType1.SelectedItem.ToString();
+                string chosenType2 = PckrType2.SelectedItem.ToString();
+
+                PokeType type1 = CreateType(chosenType1);
+                PokeType type2 = CreateType(chosenType2);
+
+                customTypes = new List<PokeType>();
+
+                customTypes.Add(type1);
+                customTypes.Add(type2);
+
+                Navigation.PopAsync();
+
+                Navigation.PushAsync(new TypesPage(customTypes));
             }
         }
     }

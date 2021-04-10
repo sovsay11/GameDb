@@ -8,6 +8,10 @@
                 <Label Text="Main Type(s)" FontSize="30" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
                    FontAttributes="Bold"/>
                 <Grid x:Name="GridMainTypes" BackgroundColor="DimGray">
+                    <Picker x:Name="PckrType1" FontSize="18" Margin="10" TextColor="White" HorizontalTextAlignment="Center"
+                            Grid.Row="0" Grid.Column="0" SelectedIndexChanged="PckrType1_SelectedIndexChanged"/>
+                    <Picker x:Name="PckrType2" FontSize="18" Margin="10" TextColor="White" HorizontalTextAlignment="Center"
+                            Grid.Row="0" Grid.Column="1" SelectedIndexChanged="PckrType2_SelectedIndexChanged"/>
                 </Grid>
                 
                 <Label Text="Strong Against:" FontSize="30" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
