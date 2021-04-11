@@ -88,7 +88,7 @@ namespace GameDb
         /// <param name="e"></param>
         private void BtnPokeDetails_Clicked(object sender, EventArgs e)
         {
-            if (LstViewPokemon.SelectedItem.ToString() != null)
+            if (LstViewPokemon.SelectedItem != null)
             {
                 DetailsPage detailsPage = new DetailsPage(LstViewPokemon.SelectedItem.ToString());
 
@@ -103,6 +103,20 @@ namespace GameDb
         private void EntName_TextChanged(object sender, TextChangedEventArgs e)
         {
             FilterPokemon();
+        }
+
+        private void BtnPokeTypes_Clicked(object sender, EventArgs e)
+        {
+            if (LstViewPokemon.SelectedItem != null)
+            {
+                DetailsPage detailsPage = new DetailsPage(LstViewPokemon.SelectedItem.ToString());
+
+                Navigation.PushAsync(new TypesPage(detailsPage.pokeTypes), true);
+            }
+            else
+            {
+                Navigation.PushAsync(new TypesPage());
+            }
         }
     }
 }

@@ -51,6 +51,13 @@ namespace GameDb
             ShowWeakTypes(pokeTypes);
         }
 
+        public TypesPage()
+        {
+            InitializeComponent();
+
+            ShowMainTypes(new List<PokeType>());
+        }
+
         private void AddTypeLabels(List<PokeType> pokeTypes, string attribute)
         {
             string attribute2;
@@ -154,8 +161,6 @@ namespace GameDb
 
                     AddToGrid(generalGrid, tempType, attribute, attrCategory, ref column, ref row);
 
-                    //generalGrid.Children.Add(tempType);
-
                 }
             }
         }
@@ -255,39 +260,25 @@ namespace GameDb
 
                 customSwitch = true;
             }
-            else
+            else if (pokeTypes.Count == 1)
             {
-                PckrType2.IsEnabled = false;
+                //PckrType2.IsEnabled = false;
 
                 PckrType1.ItemsSource = typeList;
-                PckrType1.SelectedItem = pokeTypes[0].name;
-                PckrType1.BackgroundColor = pokeTypes[0].color;
+                PckrType2.ItemsSource = typeList;
 
-                Grid.SetColumnSpan(PckrType1, 2);
+                PckrType1.SelectedItem = pokeTypes[0].name;
+
+                PckrType1.BackgroundColor = pokeTypes[0].color;
 
                 customSwitch = true;
             }
-
-            // adding labels to the new grid
-            //int i = 0;
-            //foreach (var item in pokeTypes)
-            //{
-            //    Label tempType = new Label
-            //    {
-            //        Text = item.name,
-            //        BackgroundColor = item.color,
-            //        TextColor = Color.White,
-            //        FontSize = 18,
-            //        VerticalTextAlignment = TextAlignment.Center,
-            //        HorizontalTextAlignment = TextAlignment.Center,
-            //        Padding = 10,
-            //        Margin = 10,
-            //    };
-            //    GridMainTypes.Children.Add(tempType);
-            //    Grid.SetRow(tempType, 0);
-            //    Grid.SetColumn(tempType, i);
-            //    i += 1;
-            //}
+            else
+            {
+                PckrType1.ItemsSource = typeList;
+                PckrType2.ItemsSource = typeList;
+                customSwitch = true;
+            }
         }
 
         private PokeType CreateType(string text)

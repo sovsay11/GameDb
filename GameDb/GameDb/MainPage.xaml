@@ -7,7 +7,8 @@
         <ContentView BackgroundColor="LightGray"
                      Padding="5">
             <Entry x:Name="EntName"
-                   Placeholder="Enter a name"
+                   Placeholder="Enter a name..."
+                   PlaceholderColor="Black"
                    TextChanged="EntName_TextChanged"/>
         </ContentView>
 
@@ -29,13 +30,25 @@
         -->
 
         <Button x:Name="BtnPokeDetails"
-                Text="View Details"
+                Text="Show Details"
                 FontSize="30"
-                BackgroundColor="LightGray"
-                Margin="0,0,0,10"
-                Padding="20"
+                TextColor="White"
+                BackgroundColor="DimGray"
+                Margin="10,10,10,10"
+                Padding="10"
+                CornerRadius="20"
                 Clicked="BtnPokeDetails_Clicked"/>
+
+        <Button x:Name="BtnPokeTypes"
+                Text="Show Types"
+                FontSize="30"
+                TextColor="White"
+                BackgroundColor="DimGray"
+                Margin="10, 10, 10, 10"
+                Padding="10"
+                CornerRadius="20"
+                Clicked="BtnPokeTypes_Clicked"/>
     </StackLayout>
-        
+
 
 </ContentPage>

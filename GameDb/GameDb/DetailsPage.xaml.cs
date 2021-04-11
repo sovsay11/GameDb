@@ -19,7 +19,8 @@ namespace GameDb
     {
         // local variables for stats
         string pokeName, health, attack, defense, spAtk, spDef, spd;
-        List<PokeType> pokeTypes = new List<PokeType>();
+        public List<PokeType> pokeTypes { get; set; }
+        //List<PokeType> pokeTypes = new List<PokeType>();
         PokeType pokeType1, pokeType2;
         Color typeColor;
 
@@ -71,6 +72,8 @@ namespace GameDb
         public DetailsPage(string name)
         {
             InitializeComponent();
+
+            pokeTypes = new List<PokeType>();
 
             // connecting to the API
             using (WebClient wc = new WebClient())
