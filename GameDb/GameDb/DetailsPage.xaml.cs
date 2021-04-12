@@ -20,54 +20,10 @@ namespace GameDb
         // local variables for stats
         string pokeName, health, attack, defense, spAtk, spDef, spd;
         public List<PokeType> pokeTypes { get; set; }
-        //List<PokeType> pokeTypes = new List<PokeType>();
         PokeType pokeType1, pokeType2;
         Color typeColor;
 
-        Dictionary<string, PokeType> typeDict = new Dictionary<string, PokeType>
-        {
-            { "Normal", new Normal() },
-                { "Fire", new Fire() },
-                { "Water", new Water() },
-                { "Electric", new Electric() },
-                { "Grass", new Grass() },
-                { "Ice", new Ice() },
-                { "Fighting", new Fighting() },
-                { "Poison", new Poison() },
-                { "Ground", new Ground() },
-                { "Flying", new Flying() },
-                { "Psychic", new Psychic() },
-                { "Bug", new Bug() },
-                { "Rock", new Rock() },
-                { "Ghost", new Ghost() },
-                { "Dragon", new Dragon() },
-                { "Dark", new Dark() },
-                { "Steel", new Steel() },
-                { "Fairy", new Fairy() },
-        };
-
-        // dictionary for colors and type match
-        Dictionary<string, Color> colorDictionary = new Dictionary<string, Color>
-            {
-                { "Normal", Color.FromHex("AAAA99") },
-                { "Fire", Color.FromHex("FF4422") },
-                { "Water", Color.FromHex("3399FF") },
-                { "Electric", Color.FromHex("FFCC33") },
-                { "Grass", Color.FromHex("77CC55") },
-                { "Ice", Color.FromHex("66CCFF") },
-                { "Fighting", Color.FromHex("BB5544") },
-                { "Poison", Color.FromHex("AA5599") },
-                { "Ground", Color.FromHex("DDBB55") },
-                { "Flying", Color.FromHex("8899FF") },
-                { "Psychic", Color.FromHex("FF5599") },
-                { "Bug", Color.FromHex("AABB22") },
-                { "Rock", Color.FromHex("BBAA66") },
-                { "Ghost", Color.FromHex("6666BB") },
-                { "Dragon", Color.FromHex("7766EE") },
-                { "Dark", Color.FromHex("775544") },
-                { "Steel", Color.FromHex("AAAABB") },
-                { "Fairy", Color.FromHex("EE99EE") },
-            };
+        PokeData pokeData = new PokeData();
 
         public DetailsPage(string name)
         {
@@ -151,7 +107,7 @@ namespace GameDb
         private PokeType CreateType(string text)
         {
             PokeType poke;
-            foreach (var item in typeDict)
+            foreach (var item in pokeData.typeDict)
             {
                 if (text == item.Key)
                 {
@@ -193,7 +149,7 @@ namespace GameDb
 
         private Color GetColorCode(string text)
         {
-            foreach (var colorType in colorDictionary)
+            foreach (var colorType in pokeData.colorDict)
             {
                 if (colorType.Key == text)
                 {

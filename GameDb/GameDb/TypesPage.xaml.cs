@@ -13,28 +13,7 @@ namespace GameDb
     {
         List<PokeType> customTypes = new List<PokeType>();
         bool customSwitch = false;
-
-        Dictionary<string, PokeType> typeDict = new Dictionary<string, PokeType>
-        {
-            { "Normal", new Normal() },
-                { "Fire", new Fire() },
-                { "Water", new Water() },
-                { "Electric", new Electric() },
-                { "Grass", new Grass() },
-                { "Ice", new Ice() },
-                { "Fighting", new Fighting() },
-                { "Poison", new Poison() },
-                { "Ground", new Ground() },
-                { "Flying", new Flying() },
-                { "Psychic", new Psychic() },
-                { "Bug", new Bug() },
-                { "Rock", new Rock() },
-                { "Ghost", new Ghost() },
-                { "Dragon", new Dragon() },
-                { "Dark", new Dark() },
-                { "Steel", new Steel() },
-                { "Fairy", new Fairy() },
-        };
+        PokeData pokeData = new PokeData();
 
         public TypesPage(List<PokeType> pokeTypes)
         {
@@ -225,32 +204,11 @@ namespace GameDb
 
         private void ShowMainTypes(List<PokeType> pokeTypes)
         {
-            List<string> typeList = new List<string>
-            {
-                { "Normal" },
-                { "Fire" },
-                { "Water" },
-                { "Electric" },
-                { "Grass" },
-                { "Ice" },
-                { "Fighting" },
-                { "Poison" },
-                { "Ground" },
-                { "Flying" },
-                { "Psychic" },
-                { "Bug" },
-                { "Rock" },
-                { "Ghost" },
-                { "Dragon" },
-                { "Dark" },
-                { "Steel" },
-                { "Fairy" },
-            };
 
             if (pokeTypes.Count == 2)
             {
-                PckrType1.ItemsSource = typeList;
-                PckrType2.ItemsSource = typeList;
+                PckrType1.ItemsSource = pokeData.typeList;
+                PckrType2.ItemsSource = pokeData.typeList;
 
                 PckrType1.SelectedItem = pokeTypes[0].name;
                 PckrType1.BackgroundColor = pokeTypes[0].color;
@@ -264,8 +222,8 @@ namespace GameDb
             {
                 //PckrType2.IsEnabled = false;
 
-                PckrType1.ItemsSource = typeList;
-                PckrType2.ItemsSource = typeList;
+                PckrType1.ItemsSource = pokeData.typeList;
+                PckrType2.ItemsSource = pokeData.typeList;
 
                 PckrType1.SelectedItem = pokeTypes[0].name;
 
@@ -275,8 +233,8 @@ namespace GameDb
             }
             else
             {
-                PckrType1.ItemsSource = typeList;
-                PckrType2.ItemsSource = typeList;
+                PckrType1.ItemsSource = pokeData.typeList;
+                PckrType2.ItemsSource = pokeData.typeList;
                 customSwitch = true;
             }
         }
@@ -284,7 +242,7 @@ namespace GameDb
         private PokeType CreateType(string text)
         {
             PokeType poke;
-            foreach (var item in typeDict)
+            foreach (var item in pokeData.typeDict)
             {
                 if (text == item.Key)
                 {
