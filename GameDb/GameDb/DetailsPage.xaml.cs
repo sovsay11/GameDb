@@ -25,10 +25,10 @@ namespace GameDb
 
         PokeData pokeData = new PokeData();
 
-        public DetailsPage(string name)
-        {
-            InitializeComponent();
+        string name;
 
+        protected override async void OnAppearing()
+        {
             pokeTypes = new List<PokeType>();
 
             // connecting to the API
@@ -38,10 +38,17 @@ namespace GameDb
                 {
                     // offset is starting location
                     // limit is the number of entries
-                    string jsonData = wc.DownloadString($@"https://pokeapi.co/api/v2/pokemon/{name.ToLower()}/");
+                    // await tells the program to execute this statement asynchronously (at the same time as other statements)
+                    string jsonData = await wc.DownloadStringTaskAsync($@"https://pokeapi.co/api/v2/pokemon/{name.ToLower()}/");
 
                     // deserialize JSON response to new class instance
                     PokeDetails poke = JsonConvert.DeserializeObject<PokeDetails>(jsonData);
+
+                    // turn off the loading circle
+                    LoadingCircle.IsRunning = false;
+
+                    // show the details grid
+                    DetailsGrid.IsVisible = true;
 
                     // image
                     ImgPokemon.Source = poke.sprites.front_default;
@@ -97,11 +104,20 @@ namespace GameDb
                     }
 
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-                    throw;
+                    await DisplayAlert("Oh no", ex.Message, "Close");
                 }
             }
+        }
+
+        public DetailsPage(string name)
+        {
+            InitializeComponent();
+
+            DetailsGrid.IsVisible = false;
+
+            this.name = name;
         }
 
         private PokeType CreateType(string text)
