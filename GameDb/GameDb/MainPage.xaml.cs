@@ -105,18 +105,18 @@ namespace GameDb
             FilterPokemon();
         }
 
-        private void BtnPokeTypes_Clicked(object sender, EventArgs e)
-        {
-            if (LstViewPokemon.SelectedItem != null)
-            {
-                DetailsPage detailsPage = new DetailsPage(LstViewPokemon.SelectedItem.ToString());
+        //private void BtnPokeTypes_Clicked(object sender, EventArgs e)
+        //{
+        //    if (LstViewPokemon.SelectedItem != null)
+        //    {
+        //        DetailsPage detailsPage = new DetailsPage(LstViewPokemon.SelectedItem.ToString());
 
-                Navigation.PushAsync(new TypesPage(detailsPage.pokeTypes), true);
-            }
-            else
-            {
-                Navigation.PushAsync(new TypesPage());
-            }
-        }
+        //        Navigation.PushAsync(new TypesPage(detailsPage.pokeTypes), true);
+        //    }
+        //    else
+        //    {
+        //        Navigation.PushAsync(new TypesPage());
+        //    }
+        //}
     }
 }

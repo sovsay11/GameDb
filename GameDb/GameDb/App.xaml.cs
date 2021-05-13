@@ -10,7 +10,9 @@ namespace GameDb
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new MainPage());
+            MainPage = new TabBar();
+
+            //MainPage = new NavigationPage(new MainPage());
         }
 
         protected override void OnStart()

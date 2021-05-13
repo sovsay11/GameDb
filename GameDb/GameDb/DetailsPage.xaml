@@ -1,46 +1,46 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="GameDb.DetailsPage">
-    <ContentPage.Content>
-        <ScrollView>
-            <StackLayout BackgroundColor="LightGray">
-                
-                <ActivityIndicator x:Name="LoadingCircle"
+             x:Class="GameDb.DetailsPage"
+             Title="Pokemon Details">
+    <ScrollView>
+        <StackLayout BackgroundColor="LightGray">
+
+            <ActivityIndicator x:Name="LoadingCircle"
                                    IsRunning="True"
                                    VerticalOptions="CenterAndExpand"
                                    HorizontalOptions="CenterAndExpand"
                                    Color="#696969"/>
-                
-                <Grid x:Name="DetailsGrid" BackgroundColor="LightGray">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="0.35*"/>
-                        <RowDefinition Height="0.35*"/>
-                        <RowDefinition Height="0.35*"/>
-                        <RowDefinition Height="0.35*"/>
-                        <RowDefinition Height="0.35*"/>
-                        <RowDefinition Height="0.35*"/>
-                        <RowDefinition Height="0.35*"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
 
-                    <Label x:Name="LblName"
+            <Grid x:Name="DetailsGrid" BackgroundColor="LightGray">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="0.35*"/>
+                    <RowDefinition Height="0.35*"/>
+                    <RowDefinition Height="0.35*"/>
+                    <RowDefinition Height="0.35*"/>
+                    <RowDefinition Height="0.35*"/>
+                    <RowDefinition Height="0.35*"/>
+                    <RowDefinition Height="0.35*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Label x:Name="LblName"
                    Text="Name"
                    Grid.ColumnSpan="4"
                    HorizontalOptions="Center"
                    FontSize="30"
                    FontAttributes="Bold"/>
 
-                    <Image x:Name="ImgPokemon"
+                <Image x:Name="ImgPokemon"
                    Grid.Row="1"
                    Grid.ColumnSpan="4"
                    HorizontalOptions="Center"
@@ -48,7 +48,7 @@
 
 
 
-                    <Label Text="Stats"
+                <Label Text="Stats"
                    Grid.Row="2"
                    Grid.ColumnSpan="4"
                    HorizontalOptions="Center"
@@ -56,34 +56,34 @@
                    FontSize="30"
                    FontAttributes="Bold"/>
 
-                    <!--Name labels for stats-->
-                    <Label Text="HP:"
+                <!--Name labels for stats-->
+                <Label Text="HP:"
                    Grid.Row="3"
                    FontSize="15"
                    HorizontalTextAlignment="End"/>
-                    <Label Text="Attack:"
+                <Label Text="Attack:"
                    Grid.Row="4"
                    FontSize="15"
                    HorizontalTextAlignment="End"/>
-                    <Label Text="Defense:"
+                <Label Text="Defense:"
                    Grid.Row="5"
                    FontSize="15"
                    HorizontalTextAlignment="End"/>
-                    <Label Text="Sp. Attack:"
+                <Label Text="Sp. Attack:"
                    Grid.Row="6"
                    FontSize="15"
                    HorizontalTextAlignment="End"/>
-                    <Label Text="Sp. Defense:"
+                <Label Text="Sp. Defense:"
                    Grid.Row="7"
                    FontSize="15"
                    HorizontalTextAlignment="End"/>
-                    <Label Text="Speed:"
+                <Label Text="Speed:"
                    Grid.Row="8"
                    FontSize="15"
                    HorizontalTextAlignment="End"/>
 
-                    <!--Stat values-->
-                    <Label x:Name="LblHP"
+                <!--Stat values-->
+                <Label x:Name="LblHP"
                        Text="180"
                        FontSize="15"
                        VerticalTextAlignment="Center"
@@ -91,7 +91,7 @@
                        Grid.Column="1"
                        Grid.ColumnSpan="3"
                        Margin="210,0,0,0"/>
-                    <Label x:Name="LblAttack"
+                <Label x:Name="LblAttack"
                        Text="atk"
                        FontSize="15"
                        VerticalTextAlignment="Center"
@@ -99,7 +99,7 @@
                        Grid.Column="1"
                        Grid.ColumnSpan="3"
                        Margin="60,0,0,0"/>
-                    <Label x:Name="LblDefense"
+                <Label x:Name="LblDefense"
                        Text="df"
                        FontSize="15"
                        VerticalTextAlignment="Center"
@@ -107,7 +107,7 @@
                        Grid.Column="1"
                        Grid.ColumnSpan="3"
                        Margin="60,0,0,0"/>
-                    <Label x:Name="LblSpecialAttack"
+                <Label x:Name="LblSpecialAttack"
                        Text="sa"
                        FontSize="15"
                        VerticalTextAlignment="Center"
@@ -115,7 +115,7 @@
                        Grid.Column="1"
                        Grid.ColumnSpan="3"
                        Margin="60,0,0,0"/>
-                    <Label x:Name="LblSpecialDefense"
+                <Label x:Name="LblSpecialDefense"
                        Text="sd"
                        FontSize="15"
                        VerticalTextAlignment="Center"
@@ -123,7 +123,7 @@
                        Grid.Column="1"
                        Grid.ColumnSpan="3"
                        Margin="60,0,0,0"/>
-                    <Label x:Name="LblSpeed"
+                <Label x:Name="LblSpeed"
                        Text="spd"
                        FontSize="15"
                        VerticalTextAlignment="Center"
@@ -132,8 +132,8 @@
                        Grid.ColumnSpan="3"
                        Margin="60,0,0,0"/>
 
-                    <!--These are the bars-->
-                    <Line x:Name="BarHP"
+                <!--These are the bars-->
+                <Line x:Name="BarHP"
                       Grid.Row="3"
                       Grid.Column="1"
                       Grid.ColumnSpan="3"
@@ -142,7 +142,7 @@
                       Stroke="LightBlue"
                       StrokeThickness="12"
                       />
-                    <Line x:Name="BarAttack"
+                <Line x:Name="BarAttack"
                       Grid.Row="4"
                       Grid.Column="1"
                       Grid.ColumnSpan="3"
@@ -150,7 +150,7 @@
                       StrokeLineCap="Round"
                       Stroke="LightBlue"
                       StrokeThickness="12"/>
-                    <Line x:Name="BarDefense"
+                <Line x:Name="BarDefense"
                       Grid.Row="5"
                       Grid.Column="1"
                       Grid.ColumnSpan="3"
@@ -158,7 +158,7 @@
                       StrokeLineCap="Round"
                       Stroke="LightBlue"
                       StrokeThickness="12"/>
-                    <Line x:Name="BarSpecialAttack"
+                <Line x:Name="BarSpecialAttack"
                       Grid.Row="6"
                       Grid.Column="1"
                       Grid.ColumnSpan="3"
@@ -166,7 +166,7 @@
                       StrokeLineCap="Round"
                       Stroke="LightBlue"
                       StrokeThickness="12"/>
-                    <Line x:Name="BarSpecialDefense"
+                <Line x:Name="BarSpecialDefense"
                       Grid.Row="7"
                       Grid.Column="1"
                       Grid.ColumnSpan="3"
@@ -174,7 +174,7 @@
                       StrokeLineCap="Round"
                       Stroke="LightBlue"
                       StrokeThickness="12"/>
-                    <Line x:Name="BarSpeed"
+                <Line x:Name="BarSpeed"
                       Grid.Row="8"
                       Grid.Column="1"
                       Grid.ColumnSpan="3"
@@ -183,28 +183,27 @@
                       Stroke="LightBlue"
                       StrokeThickness="12"/>
 
-                    <!--Type labels-->
-                    <Label x:Name="LblType1"
+                <!--Type labels-->
+                <Label x:Name="LblType1"
                        FontSize="20"
                        Grid.Row="9"
                        Grid.ColumnSpan="2"
                        HorizontalTextAlignment="Center">
-                        <Label.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="LblType1_Tapped"/>
-                        </Label.GestureRecognizers>
-                    </Label>
-                    <Label x:Name="LblType2"
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="LblType1_Tapped"/>
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label x:Name="LblType2"
                        FontSize="20"
                        Grid.Row="9"
                        Grid.Column="2"
                        Grid.ColumnSpan="2"
                        HorizontalTextAlignment="Center">
-                        <Label.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="LblType2_Tapped"/>
-                        </Label.GestureRecognizers>
-                    </Label>
-                </Grid>
-            </StackLayout>
-        </ScrollView>
-    </ContentPage.Content>
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="LblType2_Tapped"/>
+                    </Label.GestureRecognizers>
+                </Label>
+            </Grid>
+        </StackLayout>
+    </ScrollView>
 </ContentPage>

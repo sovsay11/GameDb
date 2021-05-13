@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="GameDb.MainPage">
-
+             x:Class="GameDb.MainPage"
+             Title="Gotta catch 'em all!">
     <StackLayout>
         <ContentView BackgroundColor="LightGray"
                      Padding="5">
@@ -39,7 +39,7 @@
                 CornerRadius="20"
                 Clicked="BtnPokeDetails_Clicked"/>
 
-        <Button x:Name="BtnPokeTypes"
+        <!--<Button x:Name="BtnPokeTypes"
                 Text="Show Types"
                 FontSize="30"
                 TextColor="White"
@@ -47,8 +47,6 @@
                 Margin="10, 10, 10, 10"
                 Padding="10"
                 CornerRadius="20"
-                Clicked="BtnPokeTypes_Clicked"/>
+                Clicked="BtnPokeTypes_Clicked"/>-->
     </StackLayout>
-
-
 </ContentPage>
